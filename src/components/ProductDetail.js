@@ -13,7 +13,7 @@ const ProductDetail = ({i1d}) => {
     },[])
 
     const seeproductdetail = async() =>{
-        const url = `http://localhost:4000/products/${id}`
+        const url = `https://my-json-server.typicode.com/hoyyChoi/HNM-website//products/${id}`
         let response = await fetch(url)
         let data = await response.json()
         setDetail(data)

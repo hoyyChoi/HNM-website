@@ -10,7 +10,7 @@ const MainPage = ({setId}) => {
 
     const getProducts = async()=>{
         let searchquery = query.get('q') || ""
-        let url = `http://localhost:4000/products?q=${searchquery}`
+        let url = ` https://my-json-server.typicode.com/hoyyChoi/HNM-website/products?q=${searchquery}`
         let response = await fetch(url)
         let data = await response.json()
         setProductList(data)
