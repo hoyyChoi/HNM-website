@@ -1,12 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const ProductCard = ({product,setId}) => {
+const ProductCard = ({product}) => {
     const navigate = useNavigate()
     
     const spaceProductDetail = () =>{
         navigate(`/products/${product.id}`)
-        setId(product.id)
+        
     }
 
   return (

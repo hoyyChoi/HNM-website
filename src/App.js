@@ -5,6 +5,7 @@ import MainPage from './components/MainPage';
 import ProductDetail from './components/ProductDetail';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // 전체 상품 페이지, 로그인, 상품상세페이지
 // 전체상품페이지에서는 전체 상품을 볼수 있다.
@@ -14,27 +15,26 @@ import { useEffect, useState } from 'react';
 // 로그아웃 버튼을 클릭하면 로그아웃이 된다.
 // 로그아웃이되면 상품 디테일 페이지를 볼 수 없다,. 다시 로그인 페이지가 보인다.
 // 로그인을 하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보인다.
-// 상품을 검색할 수 있다,.
+// 상품을 검색할 수 있다.
 
 
 function App() {
-  const [auth,setAuth] = useState(false)
-  const [id,setId] = useState(0)
+  const auth = useSelector(state=>state.auth.auth)
 
   
 
   const PrivateRoute = ()=>{
-    return auth?<ProductDetail id={id}/>:<Navigate to="/login"/>
+    return auth?<ProductDetail />:<Navigate to="/login"/>
   }
   
 
   return (
     <div>
-      <Navbar auth={auth} setAuth={setAuth}/>
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<MainPage setId={setId}/>}/>
+        <Route path="/" element={<MainPage/>}/>
         <Route path="/products/:id" element={<PrivateRoute/>}/>
-        <Route path="/login" element={<Login setAuth={setAuth}/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
       
     </div>

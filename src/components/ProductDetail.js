@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container,Row,Col,Dropdown, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { detailAction } from '../redux/detailAction'
 
 const ProductDetail = ({i1d}) => {
 
-    const [detail,setDetail] = useState([])
+    const dispatch = useDispatch()
+    const detail = useSelector(state=>state.detail.detail)
 
     let {id} = useParams()
 
@@ -12,12 +15,8 @@ const ProductDetail = ({i1d}) => {
         seeproductdetail()
     },[])
 
-    const seeproductdetail = async() =>{
-        const url = `https://my-json-server.typicode.com/hoyyChoi/HNM-website//products/${id}`
-        let response = await fetch(url)
-        let data = await response.json()
-        setDetail(data)
-        console.log(detail)
+    const seeproductdetail = () =>{
+        dispatch(detailAction.getDetail(id))
     }
 
   return (

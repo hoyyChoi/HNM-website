@@ -1,13 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {FaUserAlt,FaSearch} from "react-icons/fa";
-const Navbar = ({auth,setAuth}) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction } from '../redux/loginAction';
+
+const Navbar = () => {
     const menu = ['여성', 'divided', '남성', '신생아/유아', '아동', 'hnm home', 'sale', '지속가능성']
     const navigate = useNavigate()
     
+    const id = useSelector(state=>state.auth.id)
+    const auth = useSelector(state=>state.auth.auth)
+    let dispatch = useDispatch()
+
     const login =()=>{
         if(auth){
-            setAuth(false)
+            dispatch(loginAction.logout())
         }else{
             navigate("/login")
         }
@@ -30,6 +37,7 @@ const Navbar = ({auth,setAuth}) => {
             <div>
                 <FaUserAlt/>
                 <button className='login' onClick={login}>{!auth?'로그인':'로그아웃'}</button>
+                <div>{id}님</div>
             </div>
         </div>
         <a className='logo' href='/' ><img className='logo-img' src='https://logos-world.net/wp-content/uploads/2020/04/HM-Logo-1999-present.jpg'/></a>
