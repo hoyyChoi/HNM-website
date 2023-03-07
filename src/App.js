@@ -28,6 +28,11 @@ function App() {
   }
   console.log( auth )
 
+  const practice =()=>{
+    const a =[]
+    const b = []
+  }
+
   return (
     <div>
       <Navbar/>
