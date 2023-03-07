@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Container,Row,Col,Dropdown, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { detailAction } from '../redux/detailAction'
+import {Route} from 'react-router-dom'
 
 const ProductDetail = ({i1d}) => {
 
@@ -42,8 +43,9 @@ const ProductDetail = ({i1d}) => {
                 </Dropdown>
                 <Button variant="danger" style={{marginTop:"10px",width:"200px"}}>추가</Button>
             </Col>
-        </Row>
+        </Row> 
     </Container>
+
   )
 }
 

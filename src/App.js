@@ -24,16 +24,16 @@ function App() {
   
 
   const PrivateRoute = ()=>{
-    return auth?<ProductDetail />:<Navigate to="/login"/>
+    return auth?<MainPage/>:<Navigate to="/login"/>
   }
-  
+  console.log( auth )
 
   return (
     <div>
       <Navbar/>
       <Routes>
-        <Route path="/" element={<MainPage/>}/>
-        <Route path="/products/:id" element={<PrivateRoute/>}/>
+        <Route path="/" element={<PrivateRoute/>}/>
+        {/* <Route path="/products/:id" element={<MainPage/>}/> */}
         <Route path="/login" element={<Login/>}/>
       </Routes>
       
