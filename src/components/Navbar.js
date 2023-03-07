@@ -22,9 +22,8 @@ const Navbar = () => {
     }
 
     const search = (e) =>{
-        
         if(e.key =="Enter"){
-            console.log(e.target.value)
+            
             navigate(`/?q=${e.target.value}`)
         }
     }
